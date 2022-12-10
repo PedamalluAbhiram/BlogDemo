@@ -2,7 +2,9 @@ const express =require('express');
 const colors=require('colors');
 const mongoose =require ('mongoose');
 const PORT=process.env.PORT || 5000;
-app.use=express();
+const dotenv =require('dotenv').config();
+
+const app=express();
 app.use(express.json({extended:false}));
 
 const connectDB = async()=> {
@@ -11,8 +13,15 @@ const connectDB = async()=> {
         console.log(`MongoDB connected: ${conn.connection.host}`.cyan.underline.bold);
     }
     catch (err){
-        console.log(`ERROR: ${err.message}`)
+        console.log(`ERROR: ${err.message}`.bgRed.underline.bold);
+        process.exit(1); 
     }
 }
+
+connectDB();
+
+
+
+app.use('/api/users',require('./routes/userRoutes'));
 
 app.listen(PORT,()=>console.log(`Server is running on port ${PORT}`.bgCyan.underline.bold));
