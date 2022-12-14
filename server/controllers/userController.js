@@ -21,11 +21,12 @@ const loginUser =async(req,res)=>{
 //@desc Get user profile 
 //@access Private
 const getProfile=async(req,res)=>{
-    res.send('Get user Profile');
+    res.send('Get user profile');
 }
 
 
 module.exports={
     registerUser,
     loginUser,
+    getProfile
 }
