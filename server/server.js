@@ -20,7 +20,7 @@ const connectDB = async()=> {
 
 connectDB();
 
-
+app.get('/',function(req,res){res.send("HI")});
 
 app.use('/api/users',require('./routes/userRoutes'));
 
